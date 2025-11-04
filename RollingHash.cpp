@@ -3,8 +3,8 @@ template<ll mod> struct rolling_hash{
     ll n,s; // mod, 長さ, 文字の種類数
     vector<modint<mod>> h,pw;
     public:
-    modint<mod> get_hash(int l,int r){ // 閉区間
-        return h[r+1]-h[l]*pw[r+1-l];
+    modint<mod> get_hash(int l,int r){ // 半開区間
+        return h[r]-h[l]*pw[r-l];
     }
     bool match_hash(int a,int b,int c,int d){
         return (get_hash(a,b)==get_hash(c,d));
