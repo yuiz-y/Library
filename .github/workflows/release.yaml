@@ -1,0 +1,48 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      
+      - name: Setup TeX Live
+        run: |
+          sudo apt update
+          sudo apt install -y aptitude
+          sudo aptitude install -y texlive
+
+      - name: install code2pdf
+        working-directory: ./codes2pdf
+        run: npm install
+
+      - name: generate pdf
+        working-directory: ./codes2pdf
+        run: npx codes2pdf ../src -o ../code.pdf
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset-linux
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./code.pdf
+          asset_name: code.pdf
+          asset_content_type: application/pdf
