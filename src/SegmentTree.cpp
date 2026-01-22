@@ -20,7 +20,7 @@ struct SegmentTree{
         l += n; r += n;
         while(l<r){
             if(l&1) x = op(x, k[l++]);
-            if(r&1) x = op(x, k[--r]);
+            if(r&1) x = op(k[--r], x);
             l >>= 1; r >>= 1;
         }
         return x;
