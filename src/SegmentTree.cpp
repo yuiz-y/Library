@@ -16,14 +16,14 @@ struct SegmentTree{
         }
     };
     T query(int l, int r){
-        T x = id;
+        T x = id, y = id;
         l += n; r += n;
         while(l<r){
             if(l&1) x = op(x, k[l++]);
-            if(r&1) x = op(k[--r], x);
+            if(r&1) y = op(k[--r], y);
             l >>= 1; r >>= 1;
         }
-        return x;
+        return op(x, y);
     }
     SegmentTree(vector<T> a){
         int m = a.size();
