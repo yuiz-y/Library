@@ -1,8 +1,8 @@
-struct factorial{
+template<typename T> struct factorial{
     private:
-    vector<fp998> a,b;
+    vector<T> a, b;
     public:
-    fp998 comb(ll n, ll k){
+    T comb(ll n, ll k){
         if(k<0 || n<k) return 0;
         return a[n]*b[n-k]*b[k];
     }
