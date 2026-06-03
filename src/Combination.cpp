@@ -1,4 +1,4 @@
-template<typename T> struct factorial{
+template<typename T> struct Factorial{
     private:
     vector<T> a, b;
     public:

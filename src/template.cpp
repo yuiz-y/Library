@@ -1,18 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
-using ll=long long;
-using ld=long double;
-using vll=vector<ll>;
-using pll=pair<ll,ll>;
-#define rep(i,n) for(int i=0;i<n;i++)
-#define rrep(i,n) for(int i=n-1;0<=i;i--)
-#define REP(i,n) for(int i=1;i<=n;i++)
-#define all(a) a.begin(),a.end()
+using ll = long long;
+using ld = long double;
+using vll = vector<ll>;
+using pll = pair<ll,ll>;
+#define rep(i,n) for(ll i=0;i<(n);i++)
+#define rrep(i,n) for(ll i=(n)-1;0<=i;i--)
+#define REP(i,n) for(ll i=1;i<=n;i++)
+#define all(a) a.begin(), a.end()
 #define sort(a) sort(all(a))
 #define rev(a) reverse(all(a))
-char el='\n';
+char el = '\n';
 void YN(bool f){cout<<(f?"Yes":"No")<<"\n";}
 template<typename T> bool chmin(T& x,T y){if(x>y){x=y;return true;}return false;}
 template<typename T> bool chmax(T& x,T y){if(x<y){x=y;return true;}return false;}
+template<typename T> istream &operator>>(istream &is,pair<T,T> &v){is>>v.first>>v.second;return is;}
+template<typename T> istream &operator>>(istream &is,vector<T> &v){for(T &in:v)is>>in;return is;}
+template<typename T> ostream &operator<<(ostream &os,pair<T,T> &v){os<<v.first<<" "<<v.second;return os;}
+template<typename T> ostream &operator<<(ostream &os,vector<T> &v){rep(i,v.size())os<<v[i]<<(i+1==v.size()?"":" ");return os;}
 
 int main(){}
