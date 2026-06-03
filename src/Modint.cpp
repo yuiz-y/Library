@@ -1,4 +1,4 @@
-template<ll mod> struct modint{
+template<ll mod> struct Modint{
     public:
     ll x;
     modint(ll x=0) : x((x%mod+mod)%mod) {}
@@ -54,5 +54,10 @@ template<ll mod> struct modint{
     friend istream& operator>>(istream& is, modint& m){ is >> m.x; return is; }
 };
 
-using fp998=modint<998244353>;
-using fp107=modint<1000000007>;
+using fp998 = Modint<998244353>;
+using fp107 = Modint<1000000007>;
+
+fp998 modpow(int n, int k){
+    fp998 p = n;
+    return p.pow(k);
+}
