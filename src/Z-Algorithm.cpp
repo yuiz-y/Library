@@ -1,6 +1,6 @@
-vector<ll> Z_algirithm(string s){
+vll Z_algirithm(string s){ // z[i] := 先頭からと i 文字目からで何文字一致するか
     int n = s.size();
-    vector<ll> z(n);
+    vll z(n);
     z[0] = n;
 
     int i = 1, j = 0;

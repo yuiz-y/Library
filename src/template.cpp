@@ -2,6 +2,7 @@
 using namespace std;
 using ll = long long;
 using ld = long double;
+using ull = unsigned long long;
 using vll = vector<ll>;
 using pll = pair<ll,ll>;
 #define rep(i,n) for(ll i=0;i<(n);i++)
