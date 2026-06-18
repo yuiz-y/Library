@@ -16,12 +16,7 @@ struct SegmentTree{
         }
     }
     void apply(int i, T x){
-        i = n+i;
-        k[i] = op(k[i], x);
-        while(1<i){
-            i /= 2;
-            k[i] = op(k[i*2], k[i*2+1]);
-        }
+        update(i, op(at(i), x));
     }
     T query(int l, int r){
         T x = id, y = id;
@@ -33,6 +28,9 @@ struct SegmentTree{
         }
         return op(x, y);
     }
+    T query_all(){
+        return k[1];
+    }
     SegmentTree(vector<T> a){
         int m = a.size();
         while(n<=m+1) n *= 2;
@@ -41,3 +39,7 @@ struct SegmentTree{
         for(int i = n-1; 0<i; i--) k[i] = op(k[i*2], k[i*2+1]);
     }
 };
+
+ll mx(ll x, ll y){ return max(x, y); }
+ll mn(ll x, ll y){ return min(x, y); }
+ll sm(ll x, ll y){ return x+y; }

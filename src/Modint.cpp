@@ -1,40 +1,40 @@
 template<ll mod> struct Modint{
     public:
     ll x;
-    modint(ll x=0) : x((x%mod+mod)%mod) {}
-    modint operator-() const { return modint(-x); }
-    modint& operator+=(const modint& a){
+    Modint(ll x=0) : x((x%mod+mod)%mod) {}
+    Modint operator-() const { return Modint(-x); }
+    Modint& operator+=(const Modint& a){
         if(mod<=(x += a.x)) x-=mod;
         return *this;
     }
-    modint& operator-=(const modint& a){
+    Modint& operator-=(const Modint& a){
         if(mod<=(x+=mod-a.x)) x-=mod;
         return *this;
     }
-    modint& operator*=(const modint& a){
+    Modint& operator*=(const Modint& a){
         (x*=a.x)%=mod;
         return *this;
     }
-    modint& operator++(){
+    Modint& operator++(){
         ++x;
         return *this;
     }
-    modint operator++(int){
-        modint temp = *this;
+    Modint operator++(int){
+        Modint temp = *this;
         x++;
         return temp;
     }
-    modint& operator--(){
+    Modint& operator--(){
         --x;
         return *this;
     }
-    modint operator--(int){
-        modint temp = *this;
+    Modint operator--(int){
+        Modint temp = *this;
         x--;
         return temp;
     }
-    modint pow(ll t) const{
-        modint a=1,b=x;
+    Modint pow(ll t) const{
+        Modint a=1,b=x;
         while(t){
             if(t&1) a*=b;
             b*=b;
@@ -42,16 +42,16 @@ template<ll mod> struct Modint{
         }
         return a;
     }
-    modint inv() const { return pow(mod-2); }
-    modint& operator/=(const modint& a){ return (*this)*=a.inv(); }
-    friend modint operator+(const modint& a, const modint& b) { return modint(a)+=b; }
-    friend modint operator-(const modint& a, const modint& b) { return modint(a)-=b; }
-    friend modint operator*(const modint& a, const modint& b) { return modint(a)*=b; }
-    friend modint operator/(const modint& a, const modint& b) { return modint(a)/=b; }
-    friend bool operator==(const modint& a, const modint& b) { return (modint(a).x==b.x); }
-    friend bool operator!=(const modint& a, const modint& b) { return (modint(a).x!=b.x); }
-    friend ostream& operator<<(ostream& os, const modint& m){ os << m.x; return os; }
-    friend istream& operator>>(istream& is, modint& m){ is >> m.x; return is; }
+    Modint inv() const { return pow(mod-2); }
+    Modint& operator/=(const Modint& a){ return (*this)*=a.inv(); }
+    friend Modint operator+(const Modint& a, const Modint& b) { return Modint(a)+=b; }
+    friend Modint operator-(const Modint& a, const Modint& b) { return Modint(a)-=b; }
+    friend Modint operator*(const Modint& a, const Modint& b) { return Modint(a)*=b; }
+    friend Modint operator/(const Modint& a, const Modint& b) { return Modint(a)/=b; }
+    friend bool operator==(const Modint& a, const Modint& b) { return (Modint(a).x==b.x); }
+    friend bool operator!=(const Modint& a, const Modint& b) { return (Modint(a).x!=b.x); }
+    friend ostream& operator<<(ostream& os, const Modint& m){ os << m.x; return os; }
+    friend istream& operator>>(istream& is, Modint& m){ is >> m.x; return is; }
 };
 
 using fp998 = Modint<998244353>;

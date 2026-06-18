@@ -1,4 +1,4 @@
-// 配列aの最長増加部分列の長さ
+// 配列 a の最長増加部分列の長さ
 int LIS(vector<ll> a){
     int n = a.size();
     int inf = 1234567890;

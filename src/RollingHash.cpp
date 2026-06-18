@@ -1,39 +1,29 @@
-template<ll mod> struct rolling_hash{
-    private:
-    ll n,s; // mod, 長さ, 文字の種類数
-    vector<modint<mod>> h,pw;
-    public:
-    modint<mod> get_hash(int l,int r){ // 半開区間
-        return h[r]-h[l]*pw[r-l];
-    }
-    bool match_hash(int a,int b,int c,int d){
-        return (get_hash(a,b)==get_hash(c,d));
-    }
-    rolling_hash(){}
-    rolling_hash(string t,char c,int s){
-        this->n = t.size();
-        this->s = s;
-        this->h = vector<modint<mod>>(n+5);
-        pw=vector<modint<mod>>(n+5);
-        REP(i,n){
-            h[i] = (h[i]+t[i-1]-c);
-            h[i+1] = h[i]*s;
+template<ll base, ll mod1, ll mod2>
+struct Hash{
+    ll x1, x2, len;
+    inline static vll pow1 = {1}, pow2 = {1};
+    static Hash op_(Hash l, Hash r){
+        while(pow1.size()<=r.len){
+            pow1.push_back(pow1.back()*base%mod1);
+            pow2.push_back(pow2.back()*base%mod2);
         }
-        pw[0] = 1;
-        REP(i,n) pw[i] = pw[i-1]*s;
+        Hash ans;
+        ans.x1 = (l.x1*pow1[r.len]+r.x1)%mod1;
+        ans.x2 = (l.x2*pow2[r.len]+r.x2)%mod2;
+        ans.len = l.len+r.len;
+        return ans;
     }
+    constexpr Hash(ll x){
+        x1 = x2 = x;
+        len = 1;
+    }
+    constexpr Hash(){
+        x1 = x2 = len = 0;
+    }
+    friend bool operator==(const Hash& a, const Hash& b) { return (a.x1==b.x1 && a.x2==b.x2); }
 };
 
-struct d_rolhash{
-    private:
-    rolling_hash<998244353> h1;
-    rolling_hash<1000000007> h2;
-    public:
-    bool match(int a,int b,int c,int d){
-        return (h1.match_hash(a,b,c,d)&&h2.match_hash(a,b,c,d));
-    }
-    d_rolhash(string t,char c,int s){
-        this->h1 = rolling_hash<998244353>(t,c,s);
-        this->h2 = rolling_hash<1000000007>(t,c,s);
-    }
-};
+constexpr ll bs = 26, mod1 = 998244353, mod2 = 1000000007;
+using H = Hash<bs, mod1, mod2>;
+ll get_x(char c){ return c-'a'; }
+constexpr H id;
