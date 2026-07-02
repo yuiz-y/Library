@@ -6,7 +6,7 @@ template<typename T> struct Factorial{
         if(k<0 || n<k) return 0;
         return a[n]*b[n-k]*b[k];
     }
-    factorial(int n){
+    Factorial(int n){
         a.resize(n+10,1);
         b.resize(n+10,1);
         REP(i,n) a[i+1] = a[i]*(i+1);

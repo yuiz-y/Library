@@ -56,8 +56,3 @@ template<ll mod> struct Modint{
 
 using fp998 = Modint<998244353>;
 using fp107 = Modint<1000000007>;
-
-fp998 modpow(int n, int k){
-    fp998 p = n;
-    return p.pow(k);
-}

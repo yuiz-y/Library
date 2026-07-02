@@ -17,6 +17,9 @@ struct UnionFind{
     bool connect(int x, int y){
         return (root(x)==root(y));
     }
+    bool isroot(int i){
+        return (k[i]<0);
+    }
     ll size(int i){
         return k[root(i)]*-1;
     }
