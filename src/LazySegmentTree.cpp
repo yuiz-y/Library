@@ -46,6 +46,9 @@ struct LazySegmentTree{
     T query(int a, int b) {
         return query(a, b, 1, 0, n);
     }
+    T at(int a){
+        return query(a, a+1, 1, 0, n);
+    }
     LazySegmentTree(vector<T> a){
         int m = a.size();
         while(n<m) n *= 2;

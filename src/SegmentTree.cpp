@@ -19,6 +19,8 @@ struct SegmentTree{
         update(i, op(at(i), x));
     }
     T query(int l, int r){
+        chmax(l, 0);
+        chmin(r, n);
         T x = id, y = id;
         l += n; r += n;
         while(l<r){
