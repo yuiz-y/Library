@@ -7,14 +7,19 @@ using vll = vector<ll>;
 using pll = pair<ll,ll>;
 #define rep(i,n) for(ll i=0;i<(n);i++)
 #define rrep(i,n) for(ll i=(n)-1;0<=i;i--)
-#define REP(i,n) for(ll i=1;i<=n;i++)
+#define REP(i,n) for(ll i=1;i<=(n);i++)
+#define RREP(i,n) for(ll i=(n);1<=i;i--)
 #define all(a) a.begin(), a.end()
 #define sort(a) sort(all(a))
 #define rev(a) reverse(all(a))
 char el = '\n';
 void YN(bool f){cout<<(f?"Yes":"No")<<"\n";}
+template<typename T> using vec = vector<T>;
+template<typename T> using vec2 = vec<vec<T>>;
+template<typename T> using vec3 = vec<vec2<T>>;
 template<typename T> bool chmin(T& x,T y){if(x>y){x=y;return true;}return false;}
 template<typename T> bool chmax(T& x,T y){if(x<y){x=y;return true;}return false;}
+template<typename T> bool isin(T x,T y){return(0<=x&&x<y);}
 template<typename T> istream &operator>>(istream &is,pair<T,T> &v){is>>v.first>>v.second;return is;}
 template<typename T> istream &operator>>(istream &is,vector<T> &v){for(T &in:v)is>>in;return is;}
 template<typename T> ostream &operator<<(ostream &os,pair<T,T> &v){os<<v.first<<" "<<v.second;return os;}
